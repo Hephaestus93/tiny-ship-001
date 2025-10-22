@@ -14,7 +14,9 @@
 <body>
   <h1>Γεια σου, κόσμε 👋</h1>
   <p>This page ships even if it’s imperfect.</p>
-  <button id="btn">Clicks: <span id="count">0</span></button>
+  <button id="btn" type=button aria-describedby="count">
+    Clicks: <output id="count" aria-live="polite" aria-atomic="true">0</output>
+  </button>
 
   <script>
     const KEY = "ts1_clicks";
@@ -23,7 +25,9 @@
     let n = parseInt(localStorage.getItem(KEY) || "0", 10);
     countEl.textContent = n;
     btn.addEventListener("click", () => {
-      n++; localStorage.setItem(KEY, n); countEl.textContent = n;
+      n++;
+      localStorage.setItem(KEY, n); 
+      countEl.textContent = n;
     });
   </script>
 </body>
